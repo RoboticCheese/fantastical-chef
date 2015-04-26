@@ -1,7 +1,7 @@
 # Encoding: UTF-8
 #
 # Cookbook Name:: fantastical
-# Recipe:: default
+# Library:: provider_mapping
 #
 # Copyright 2015 Jonathan Hartman
 #
@@ -18,8 +18,9 @@
 # limitations under the License.
 #
 
-include_recipe 'mac-app-store'
+require 'chef/dsl'
+require 'chef/platform/provider_mapping'
 
-fantastical_app 'default' do
-  action :install
-end
+Chef::Platform.set(platform: :mac_os_x,
+                   resource: :fantastical_app,
+                   provider: Chef::Provider::MacAppStoreApp)

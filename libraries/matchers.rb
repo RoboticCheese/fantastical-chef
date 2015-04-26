@@ -1,7 +1,7 @@
 # Encoding: UTF-8
 #
 # Cookbook Name:: fantastical
-# Recipe:: default
+# Library:: matchers
 #
 # Copyright 2015 Jonathan Hartman
 #
@@ -18,8 +18,10 @@
 # limitations under the License.
 #
 
-include_recipe 'mac-app-store'
+if defined?(ChefSpec)
+  ChefSpec.define_matcher(:fantastical_app)
 
-fantastical_app 'default' do
-  action :install
+  def install_fantastical_app(name)
+    ChefSpec::Matchers::ResourceMatcher.new(:fantastical_app, :install, name)
+  end
 end

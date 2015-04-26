@@ -9,6 +9,9 @@ require 'simplecov-console'
 require 'coveralls'
 require 'tmpdir'
 require 'fileutils'
+require_relative '../libraries/matchers'
+require_relative 'support/resource/mac_app_store_app'
+require_relative 'support/provider/mac_app_store_app'
 
 RSpec.configure do |c|
   c.color = true

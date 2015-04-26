@@ -1,13 +1,21 @@
 # Encoding: UTF-8
 
-require_relative '../spec_helper'
+require 'spec_helper'
 
 describe 'fantastical::default' do
-  let(:platform) { { platform: 'ubuntu', version: '14.04' } }
+  let(:platform) { nil }
   let(:runner) { ChefSpec::SoloRunner.new(platform) }
   let(:chef_run) { runner.converge(described_recipe) }
 
-  it 'converges successfully' do
-    expect(chef_run).to be
+  context 'Mac OS X platform' do
+    let(:platform) { { platform: 'mac_os_x', version: '10.10' } }
+
+    it 'runs the mac-app-store default recipe' do
+      expect(chef_run).to include_recipe('mac-app-store')
+    end
+
+    it 'installs the Fantastical app' do
+      expect(chef_run).to install_fantastical_app('default')
+    end
   end
 end
