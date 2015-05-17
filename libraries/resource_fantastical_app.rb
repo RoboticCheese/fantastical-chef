@@ -18,27 +18,25 @@
 # limitations under the License.
 #
 
+require 'chef/resource/lwrp_base'
+
 class Chef
   class Resource
     # A Chef resource for the Fantastical app.
     #
     # @author Jonathan Hartman <j@p4nt5.com>
-    class FantasticalApp < MacAppStoreApp
+    class FantasticalApp < LWRPBase
       self.resource_name = :fantastical_app
+      actions :install, :enable, :start
+      default_action [:install, :enable, :start]
 
       #
-      # Overload the app name with the one for this app.
+      # Attributes for the app's installed, enabled, and running statuses.
       #
-      attribute :app_name,
-                kind_of: String,
-                default: 'Fantastical 2 - Calendar and Reminders'
-
-      #
-      # Overload the bundle ID with the one for this app.
-      #
-      attribute :bundle_id,
-                kind_of: String,
-                default: 'com.flexibits.fantastical2.mac'
+      [:installed, :enabled, :running].each do |s|
+        attribute s, kind_of: [NilClass, TrueClass, FalseClass], default: nil
+        alias_method :"#{s}?", s
+      end
     end
   end
 end

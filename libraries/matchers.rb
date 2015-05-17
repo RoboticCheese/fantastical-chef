@@ -21,7 +21,9 @@
 if defined?(ChefSpec)
   ChefSpec.define_matcher(:fantastical_app)
 
-  def install_fantastical_app(name)
-    ChefSpec::Matchers::ResourceMatcher.new(:fantastical_app, :install, name)
+  [:install, :enable, :start].each do |a|
+    define_method :"#{a}_fantastical_app" do |name|
+      ChefSpec::Matchers::ResourceMatcher.new(:fantastical_app, a, name)
+    end
   end
 end

@@ -20,7 +20,8 @@
 
 require 'chef/dsl'
 require 'chef/platform/provider_mapping'
+require_relative 'provider_fantastical_app_mac_os_x'
 
 Chef::Platform.set(platform: :mac_os_x,
                    resource: :fantastical_app,
-                   provider: Chef::Provider::MacAppStoreApp)
+                   provider: Chef::Provider::FantasticalApp::MacOsX::AppStore)
