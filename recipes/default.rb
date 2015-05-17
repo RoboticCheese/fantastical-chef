@@ -18,8 +18,6 @@
 # limitations under the License.
 #
 
-include_recipe 'mac-app-store'
-
 fantastical_app 'default' do
-  action :install
+  action [:install, :enable, :start]
 end

@@ -10,12 +10,16 @@ describe 'fantastical::default' do
   context 'Mac OS X platform' do
     let(:platform) { { platform: 'mac_os_x', version: '10.10' } }
 
-    it 'runs the mac-app-store default recipe' do
-      expect(chef_run).to include_recipe('mac-app-store')
-    end
-
     it 'installs the Fantastical app' do
       expect(chef_run).to install_fantastical_app('default')
+    end
+
+    it 'enables the Fantastical app' do
+      expect(chef_run).to enable_fantastical_app('default')
+    end
+
+    it 'starts the Fantastical app' do
+      expect(chef_run).to start_fantastical_app('default')
     end
   end
 end

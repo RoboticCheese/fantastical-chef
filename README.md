@@ -47,15 +47,24 @@ Syntax:
 
 Actions:
 
-| Action     | Description     |
-|------------|-----------------|
-| `:install` | Install the app |
+| Action     | Description                   |
+|------------|-------------------------------|
+| `:install` | Install the app               |
+| `:enable`  | Set the app to start on login |
+| `:start `  | Run the app                   |
 
 Attributes:
 
-| Attribute  | Default        | Description          |
-|------------|----------------|----------------------|
-| action     | `:install`     | Action(s) to perform |
+| Attribute  | Default                     | Description          |
+|------------|-----------------------------|----------------------|
+| action     | `[:install, :enable, :run]` | Action(s) to perform |
+
+Providers
+=========
+
+***Chef::Provider::FantasticalApp::MacOsX::AppStore***
+
+Provider for installs from the Mac App Store.
 
 Contributing
 ============
