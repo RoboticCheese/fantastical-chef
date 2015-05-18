@@ -17,11 +17,11 @@ describe Chef::Provider::FantasticalApp::MacOsX do
       p = provider
       expect(p).to receive(:execute).with('start fantastical').and_yield
       expect(p).to receive(:command)
-        .with('open /Applications/Fantastical\ 2.app')
+        .with('open \'/Applications/Fantastical 2.app\'')
       expect(p).to receive(:user).with(Etc.getlogin)
       expect(p).to receive(:action).with(:run)
       expect(p).to receive(:only_if).and_yield
-      cmd = 'ps -A -c -o command | grep ^Fantastical$'
+      cmd = 'ps -A -c -o command | grep ^Fantastical\ 2$'
       expect(Mixlib::ShellOut).to receive(:new).with(cmd)
         .and_return(double(run_command: double(stdout: 'test')))
       p.send(:start!)

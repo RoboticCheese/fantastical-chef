@@ -70,11 +70,11 @@ class Chef
         #
         def start!
           execute 'start fantastical' do
-            command "open #{PATH.gsub(' ', '\ ')}"
+            command "open '#{PATH}'"
             user Etc.getlogin
             action :run
             only_if do
-              cmd = 'ps -A -c -o command | grep ^Fantastical$'
+              cmd = 'ps -A -c -o command | grep ^Fantastical\ 2$'
               Mixlib::ShellOut.new(cmd).run_command.stdout.empty?
             end
           end
