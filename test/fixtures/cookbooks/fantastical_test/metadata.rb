@@ -1,15 +1,15 @@
 # Encoding: UTF-8
 #
 # rubocop:disable SingleSpaceBeforeFirstArg
-name             'fantastical'
+name             'fantastical_test'
 maintainer       'Jonathan Hartman'
 maintainer_email 'j@p4nt5.com'
 license          'apache2'
-description      'Installs/Configures Fantastical'
-long_description 'Installs/Configures Fantastical'
+description      'Installs/Configures fantastical_test'
+long_description 'Installs/Configures fantastical_test'
 version          '0.0.1'
 
-depends          'mac-app-store', '~> 1.0'
+depends          'fantastical'
 
 supports         'mac_os_x'
 # rubocop:enable SingleSpaceBeforeFirstArg

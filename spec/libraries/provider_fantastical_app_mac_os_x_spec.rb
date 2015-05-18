@@ -16,11 +16,12 @@ describe Chef::Provider::FantasticalApp::MacOsX do
     it 'starts up Fantastical' do
       p = provider
       expect(p).to receive(:execute).with('start fantastical').and_yield
-      expect(p).to receive(:command).with('open /Applications/Fantastical.app')
+      expect(p).to receive(:command)
+        .with('open \'/Applications/Fantastical 2.app\'')
       expect(p).to receive(:user).with(Etc.getlogin)
       expect(p).to receive(:action).with(:run)
       expect(p).to receive(:only_if).and_yield
-      cmd = 'ps -A -c -o command | grep ^Fantastical$'
+      cmd = 'ps -A -c -o command | grep ^Fantastical\ 2$'
       expect(Mixlib::ShellOut).to receive(:new).with(cmd)
         .and_return(double(run_command: double(stdout: 'test')))
       p.send(:start!)
@@ -36,8 +37,8 @@ describe Chef::Provider::FantasticalApp::MacOsX do
       p = provider
       expect(p).to receive(:execute).with('enable fantastical').and_yield
       cmd = 'osascript -e \'tell application "System Events" to make new ' \
-            'login item at end with properties {name: "Fantastical", ' \
-            'path: "/Applications/Fantastical.app", hidden: false}\''
+            'login item at end with properties {name: "Fantastical 2", ' \
+            'path: "/Applications/Fantastical 2.app", hidden: false}\''
       expect(p).to receive(:command).with(cmd)
       expect(p).to receive(:action).with(:run)
       expect(p).to receive(:only_if).and_yield
@@ -52,7 +53,7 @@ describe Chef::Provider::FantasticalApp::MacOsX do
 
     before(:each) do
       cmd = 'osascript -e \'tell application "System Events" to get the ' \
-            'name of the login item "Fantastical"\''
+            'name of the login item "Fantastical 2"\''
       allow(Mixlib::ShellOut).to receive(:new).with(cmd)
         .and_return(double(run_command: double(stdout: stdout)))
     end

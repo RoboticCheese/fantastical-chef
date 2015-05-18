@@ -4,3 +4,10 @@ driver:
 
 platforms:
   - name: macosx
+
+suites:
+  # Fantastical 2 requires 10.10 which TravisCI doesn't have yet (2015-05-18)
+  - name: mac_direct_download_dont_start
+    run_list:
+      - recipe[fantastical_test::mac_direct_download_dont_start]
+    attributes:

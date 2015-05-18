@@ -64,7 +64,11 @@ Providers
 
 ***Chef::Provider::FantasticalApp::MacOsX::AppStore***
 
-Provider for installs from the Mac App Store.
+Provider for installs from the Mac App Store (default).
+
+***Chef::Provider::FantasticalApp::MacOsX::Direct***
+
+Provider for installs via direct downloads from Flexibits' site.
 
 Contributing
 ============

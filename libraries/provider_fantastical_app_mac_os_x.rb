@@ -22,7 +22,7 @@ require 'etc'
 require 'chef/provider/lwrp_base'
 require_relative 'provider_fantastical_app'
 require_relative 'provider_fantastical_app_mac_os_x_app_store'
-# TODO: require_relative 'provider_fantastical_app_mac_os_x_direct'
+require_relative 'provider_fantastical_app_mac_os_x_direct'
 
 class Chef
   class Provider
@@ -32,7 +32,7 @@ class Chef
       # @author Jonathan Hartman <j@p4nt5.com>
       class MacOsX < FantasticalApp
         # `URL` varies by sub-provider
-        PATH ||= '/Applications/Fantastical.app'
+        PATH ||= '/Applications/Fantastical 2.app'
 
         private
 
@@ -44,7 +44,7 @@ class Chef
           # login_item resources in the mac_os_x cookbook.
           cmd = "osascript -e 'tell application \"System Events\" to make " \
                 'new login item at end with properties ' \
-                "{name: \"Fantastical\", path: \"#{PATH}\", hidden: false}'"
+                "{name: \"Fantastical 2\", path: \"#{PATH}\", hidden: false}'"
           enabled_status = enabled?
           execute 'enable fantastical' do
             command cmd
@@ -61,7 +61,7 @@ class Chef
         #
         def enabled?
           cmd = "osascript -e 'tell application \"System Events\" to get " \
-                "the name of the login item \"Fantastical\"'"
+                "the name of the login item \"Fantastical 2\"'"
           !Mixlib::ShellOut.new(cmd).run_command.stdout.empty?
         end
 
@@ -70,11 +70,11 @@ class Chef
         #
         def start!
           execute 'start fantastical' do
-            command "open #{PATH}"
+            command "open '#{PATH}'"
             user Etc.getlogin
             action :run
             only_if do
-              cmd = 'ps -A -c -o command | grep ^Fantastical$'
+              cmd = 'ps -A -c -o command | grep ^Fantastical\ 2$'
               Mixlib::ShellOut.new(cmd).run_command.stdout.empty?
             end
           end

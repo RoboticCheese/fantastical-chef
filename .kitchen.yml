@@ -21,3 +21,7 @@ suites:
       mac_app_store:
         username: <%= ENV['APPLE_ID_USERNAME'] %>
         password: <%= ENV['APPLE_ID_PASSWORD'] %>
+  - name: mac_direct_download
+    run_list:
+      - recipe[fantastical_test::mac_direct_download]
+    attributes:
