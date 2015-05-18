@@ -11,10 +11,10 @@ describe 'Fantastical app' do
 
   describe command(
     'osascript -e \'tell application "System Events" to get the name of the ' \
-    'login item "Divvy"\''
+    'login item "Fantastical 2"\''
   ) do
     it 'indicates Fantastical is enabled' do
-      expect(subject.stdout.strip).to eq('Fantastical')
+      expect(subject.stdout.strip).to eq('Fantastical 2')
     end
   end
 end

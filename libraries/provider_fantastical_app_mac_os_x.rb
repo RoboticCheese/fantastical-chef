@@ -44,7 +44,7 @@ class Chef
           # login_item resources in the mac_os_x cookbook.
           cmd = "osascript -e 'tell application \"System Events\" to make " \
                 'new login item at end with properties ' \
-                "{name: \"Fantastical\", path: \"#{PATH}\", hidden: false}'"
+                "{name: \"Fantastical 2\", path: \"#{PATH}\", hidden: false}'"
           enabled_status = enabled?
           execute 'enable fantastical' do
             command cmd
@@ -61,7 +61,7 @@ class Chef
         #
         def enabled?
           cmd = "osascript -e 'tell application \"System Events\" to get " \
-                "the name of the login item \"Fantastical\"'"
+                "the name of the login item \"Fantastical 2\"'"
           !Mixlib::ShellOut.new(cmd).run_command.stdout.empty?
         end
 
