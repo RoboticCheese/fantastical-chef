@@ -4,3 +4,9 @@ driver:
 
 platforms:
   - name: macosx
+
+suites:
+  - name: mac_direct_download
+    run_list:
+      - recipe[fantastical_test::mac_direct_download]
+    attributes:

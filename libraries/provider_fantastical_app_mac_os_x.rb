@@ -22,7 +22,7 @@ require 'etc'
 require 'chef/provider/lwrp_base'
 require_relative 'provider_fantastical_app'
 require_relative 'provider_fantastical_app_mac_os_x_app_store'
-# TODO: require_relative 'provider_fantastical_app_mac_os_x_direct'
+require_relative 'provider_fantastical_app_mac_os_x_direct'
 
 class Chef
   class Provider
@@ -32,7 +32,7 @@ class Chef
       # @author Jonathan Hartman <j@p4nt5.com>
       class MacOsX < FantasticalApp
         # `URL` varies by sub-provider
-        PATH ||= '/Applications/Fantastical.app'
+        PATH ||= '/Applications/Fantastical 2.app'
 
         private
 

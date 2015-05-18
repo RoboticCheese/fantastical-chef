@@ -16,7 +16,8 @@ describe Chef::Provider::FantasticalApp::MacOsX do
     it 'starts up Fantastical' do
       p = provider
       expect(p).to receive(:execute).with('start fantastical').and_yield
-      expect(p).to receive(:command).with('open /Applications/Fantastical.app')
+      expect(p).to receive(:command)
+        .with('open /Applications/Fantastical 2.app')
       expect(p).to receive(:user).with(Etc.getlogin)
       expect(p).to receive(:action).with(:run)
       expect(p).to receive(:only_if).and_yield
@@ -37,7 +38,7 @@ describe Chef::Provider::FantasticalApp::MacOsX do
       expect(p).to receive(:execute).with('enable fantastical').and_yield
       cmd = 'osascript -e \'tell application "System Events" to make new ' \
             'login item at end with properties {name: "Fantastical", ' \
-            'path: "/Applications/Fantastical.app", hidden: false}\''
+            'path: "/Applications/Fantastical 2.app", hidden: false}\''
       expect(p).to receive(:command).with(cmd)
       expect(p).to receive(:action).with(:run)
       expect(p).to receive(:only_if).and_yield
