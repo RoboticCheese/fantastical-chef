@@ -70,7 +70,7 @@ class Chef
         #
         def start!
           execute 'start fantastical' do
-            command "open #{PATH}"
+            command "open #{PATH.gsub(' ', '\ ')}"
             user Etc.getlogin
             action :run
             only_if do
