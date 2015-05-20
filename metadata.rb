@@ -7,7 +7,7 @@ maintainer_email 'j@p4nt5.com'
 license          'apache2'
 description      'Installs/Configures Fantastical'
 long_description 'Installs/Configures Fantastical'
-version          '0.0.1'
+version          '0.1.0'
 
 depends          'mac-app-store', '~> 1.0'
 
