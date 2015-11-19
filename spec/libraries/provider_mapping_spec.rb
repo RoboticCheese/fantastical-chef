@@ -6,7 +6,8 @@ require_relative '../../libraries/provider_mapping'
 describe :provider_mapping do
   let(:platform) { nil }
   let(:app_provider) do
-    Chef::Platform.platforms[platform][:default][:fantastical_app]
+    Chef::Platform.platforms[platform] && \
+      Chef::Platform.platforms[platform][:default][:fantastical_app]
   end
 
   context 'Mac OS X' do
