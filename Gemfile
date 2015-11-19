@@ -12,8 +12,6 @@ end
 
 group :test do
   gem 'rake'
-  gem 'cane'
-  gem 'countloc'
   gem 'rubocop'
   gem 'foodcritic'
   gem 'rspec', '>= 3'
@@ -29,7 +27,6 @@ end
 
 group :integration do
   gem 'serverspec', '>= 2'
-  gem 'cucumber'
 end
 
 group :deploy do
