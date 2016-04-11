@@ -33,6 +33,8 @@ class Chef
         class AppStore < MacOsX
           include Chef::DSL::IncludeRecipe
 
+          use_inline_resources
+
           private
 
           #

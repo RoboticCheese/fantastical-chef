@@ -11,7 +11,6 @@ platforms:
       box: roboticcheese/macosx-10.10
       ssh:
         insert_key: false
-      gui: true
 
 suites:
   - name: default
