@@ -31,7 +31,9 @@ class Chef
         #
         # @author Jonathan Hartman <j@p4nt5.com>
         class Direct < MacOsX
-          URL ||= 'http://flexibits.com/fantastical/download'
+          URL ||= 'http://flexibits.com/fantastical/download'.freeze
+
+          use_inline_resources
 
           private
 

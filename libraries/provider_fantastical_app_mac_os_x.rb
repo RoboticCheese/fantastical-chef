@@ -32,7 +32,9 @@ class Chef
       # @author Jonathan Hartman <j@p4nt5.com>
       class MacOsX < FantasticalApp
         # `URL` varies by sub-provider
-        PATH ||= '/Applications/Fantastical 2.app'
+        PATH ||= '/Applications/Fantastical 2.app'.freeze
+
+        use_inline_resources
 
         private
 

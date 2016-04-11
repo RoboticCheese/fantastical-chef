@@ -1,15 +1,16 @@
 # Encoding: UTF-8
-#
-# rubocop:disable SingleSpaceBeforeFirstArg
-name             'fantastical'
-maintainer       'Jonathan Hartman'
+
+name 'fantastical'
+maintainer 'Jonathan Hartman'
 maintainer_email 'j@p4nt5.com'
-license          'apache2'
-description      'Installs/Configures Fantastical'
+license 'apache2'
+description 'Installs/Configures Fantastical'
 long_description 'Installs/Configures Fantastical'
-version          '0.1.1'
+version '0.1.1'
 
-depends          'mac-app-store', '~> 1.0'
+source_url 'https://github.com/RoboticCheese/fantastical-chef'
+issues_url 'https://github.com/RoboticCheese/fantastical-chef/issues'
 
-supports         'mac_os_x'
-# rubocop:enable SingleSpaceBeforeFirstArg
+depends 'mac-app-store', '~> 1.0'
+
+supports 'mac_os_x'
