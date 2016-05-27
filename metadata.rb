@@ -11,6 +11,6 @@ version '0.1.1'
 source_url 'https://github.com/RoboticCheese/fantastical-chef'
 issues_url 'https://github.com/RoboticCheese/fantastical-chef/issues'
 
-depends 'mac-app-store', '~> 1.0'
+depends 'mac-app-store', '~> 2.0'
 
 supports 'mac_os_x'

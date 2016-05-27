@@ -3,7 +3,7 @@
 # Cookbook Name:: fantastical
 # Recipe:: default
 #
-# Copyright 2015 Jonathan Hartman
+# Copyright 2015-2016, Jonathan Hartman
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -19,5 +19,7 @@
 #
 
 fantastical_app 'default' do
-  action [:install, :enable, :start]
+  unless node['fantastical']['system_user'].nil?
+    system_user node['fantastical']['system_user']
+  end
 end

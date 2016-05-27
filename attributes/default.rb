@@ -1,9 +1,9 @@
 # Encoding: UTF-8
 #
 # Cookbook Name:: fantastical
-# Library:: provider_mapping
+# Attributes:: default
 #
-# Copyright 2015 Jonathan Hartman
+# Copyright 2015-2016, Jonathan Hartman
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -18,10 +18,4 @@
 # limitations under the License.
 #
 
-require 'chef/dsl'
-require 'chef/platform/provider_mapping'
-require_relative 'provider_fantastical_app_mac_os_x'
-
-Chef::Platform.set(platform: :mac_os_x,
-                   resource: :fantastical_app,
-                   provider: Chef::Provider::FantasticalApp::MacOsX::AppStore)
+default['fantastical']['system_user'] = nil
