@@ -1,6 +1,9 @@
 Fantastical Cookbook CHANGELOG
 ==============================
 
+Unreleased
+----------
+
 v1.0.0 (2016-05-27)
 -------------------
 - Update for mac-app-store cookbook 2.0
