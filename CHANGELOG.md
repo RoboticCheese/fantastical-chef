@@ -1,8 +1,8 @@
 Fantastical Cookbook CHANGELOG
 ==============================
 
-Unreleased
-----------
+v1.0.0 (2016-05-27)
+-------------------
 - Update for mac-app-store cookbook 2.0
 - Convert to custom resources, breaking compatibility with Chef < 12.5
 
