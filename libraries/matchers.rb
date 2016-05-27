@@ -3,7 +3,7 @@
 # Cookbook Name:: fantastical
 # Library:: matchers
 #
-# Copyright 2015 Jonathan Hartman
+# Copyright 2015-2016, Jonathan Hartman
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -19,11 +19,15 @@
 #
 
 if defined?(ChefSpec)
-  ChefSpec.define_matcher(:fantastical_app)
+  {
+    fantastical_app: %i(install upgrade enable start)
+  }.each do |matcher, actions|
+    ChefSpec.define_matcher(matcher)
 
-  [:install, :enable, :start].each do |a|
-    define_method :"#{a}_fantastical_app" do |name|
-      ChefSpec::Matchers::ResourceMatcher.new(:fantastical_app, a, name)
+    actions.each do |action|
+      define_method("#{action}_#{matcher}") do |name|
+        ChefSpec::Matchers::ResourceMatcher.new(matcher, action, name)
+      end
     end
   end
 end

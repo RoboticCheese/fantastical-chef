@@ -37,38 +37,38 @@ Resources
 
 ***fantastical_app***
 
-Used to perform installation of the app.
+Used to manage the fantastical app.
 
 Syntax:
 
     fantastical_app 'default' do
-        action :install
+      source :mac_app_store
+      system_user 'vagrant'
+      action %i(install enable start)
     end
 
 Actions:
 
-| Action     | Description                   |
-|------------|-------------------------------|
-| `:install` | Install the app               |
-| `:enable`  | Set the app to start on login |
-| `:start `  | Run the app                   |
+| Action        | Description                   |
+|---------------|-------------------------------|
+| `:install`    | Install the app               |
+| `:upgrade`\*  | Upgrade the app               |
+| `:remove`\*\* | Uninstall the app             |
+| `:enable`     | Set the app to start on login |
+| `:disable`    | Delete the app's login item   |
+| `:start `     | Run the app                   |
+| `:stop`       | Kill the running app          |
 
-Attributes:
+\* The `:upgrade` action is only supported for App Store installs
+\*\* The `:remove` action is only supported for `:direct` installs
 
-| Attribute  | Default                     | Description          |
-|------------|-----------------------------|----------------------|
-| action     | `[:install, :enable, :run]` | Action(s) to perform |
+Properties:
 
-Providers
-=========
-
-***Chef::Provider::FantasticalApp::MacOsX::AppStore***
-
-Provider for installs from the Mac App Store (default).
-
-***Chef::Provider::FantasticalApp::MacOsX::Direct***
-
-Provider for installs via direct downloads from Flexibits' site.
+| Property  | Default                    | Description                                    |
+|------------|---------------------------|------------------------------------------------|
+| source      | `:app_store`             | Install via `:app_store` or `:direct` download |
+| system_user | Current logged-in user   | User to shell out as for execute commands      |
+| action      | `%i(install enable run)` | Action(s) to perform                           |
 
 Contributing
 ============
@@ -84,7 +84,7 @@ License & Authors
 =================
 - Author: Jonathan Hartman <j@p4nt5.com>
 
-Copyright 2015 Jonathan Hartman
+Copyright 2015-2016, Jonathan Hartman
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
